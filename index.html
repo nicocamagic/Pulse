@@ -7,6 +7,9 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Calculadora</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1c1c1e">
+<meta name="apple-mobile-web-app-title" content="Calculadora">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500&display=swap');
 
@@ -86,7 +89,7 @@
   .display-main.smaller { font-size: clamp(28px, 10vw, 54px); }
 
   .display-main.magic {
-    color: #ffffff;
+    color: #30d158;
     animation: magicReveal 0.45s cubic-bezier(0.34,1.56,0.64,1);
   }
   @keyframes magicReveal {
@@ -109,7 +112,6 @@
   .key {
     border-radius: 50%;
     border: none;
-    background: none;
     font-family: -apple-system, 'Helvetica Neue', sans-serif;
     font-size: clamp(22px, 6vw, 36px);
     font-weight: 400;
@@ -120,6 +122,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    -webkit-appearance: none;
     touch-action: manipulation;
   }
 
@@ -711,6 +714,11 @@ function endHold(e) {
     fill.style.strokeDashoffset = 289;
     setTimeout(() => { svg.style.display = 'none'; }, 300);
   }
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
 }
 </script>
 </body>
